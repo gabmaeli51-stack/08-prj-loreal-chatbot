@@ -1,5 +1,5 @@
 /* ==========================================
-   🎨 1. PREMIUM L'ORÉAL EDITORIAL TYPOGRAPHY
+   🎨 1. PREMIUM LUXURY TYPOGRAPHY IMPORT
    ========================================== */
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Inter:wght@300;400;500&display=swap');
 
@@ -10,64 +10,77 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, sans-serif;
-  background-color: #000000;
+  font-family: 'Inter', sans-serif;
+  background-color: #050505;
+  /* Premium radial backing glow reminiscent of your portfolio's modern dark theme */
+  background-image: radial-gradient(circle at 50% 15%, rgba(255, 0, 127, 0.12) 0%, rgba(5, 5, 5, 1) 70%);
   color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   letter-spacing: 0.03em;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
-/* Cyber ticker at the top/side */
+/* Futuristic branding side ticker */
 .cyber-ticker {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 24px;
+  left: 24px;
   font-family: monospace;
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.7rem;
+  color: rgba(255, 0, 127, 0.4);
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(255, 0, 127, 0.2);
 }
 
 /* ==========================================
-   🖼️ 2. LAYOUT FRAME & CONTAINER SIZING
+   🖼️ 2. GLOWING GLASS CONTAINER FRAMEWORKS
    ========================================== */
 .page-wrapper {
-  width: 100%;
-  max-width: 800px;
+  width: 90%;
+  max-width: 850px;
   height: 85vh;
-  background: rgba(15, 15, 15, 0.7);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  background: rgba(10, 10, 10, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 0, 127, 0.15);
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
-  padding: 30px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  padding: 35px;
+  box-shadow: 0 0 40px rgba(255, 0, 127, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 
-/* Luxury Brand Header Styling */
+/* Luxury Brand Header Block */
 .brand-header {
   text-align: center;
   margin-bottom: 25px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 0, 127, 0.2);
   padding-bottom: 20px;
+}
+
+.brand-logo {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+  transition: transform 0.3s ease;
+}
+.brand-logo:hover {
+  transform: scale(1.05);
 }
 
 .brand-title {
   font-family: 'Bodoni Moda', 'Didot', serif;
-  font-weight: 400;
-  font-size: 1.2rem;
-  letter-spacing: 0.3em;
+  font-weight: 500;
+  font-size: 1.4rem;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
   color: #ffffff;
-  margin-top: 10px;
+  margin-top: 15px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-/* Main inner chat container grid */
+/* Main inner layout grid */
 .chatbox {
   flex: 1;
   display: flex;
@@ -75,41 +88,41 @@ body {
   overflow: hidden;
 }
 
-/* LevelUp Monitor Panel: Locked top question tracker block */
+/* LevelUp Monitor Panel: Premium locked query tracker */
 .latest-question-box {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.6);
-  padding: 10px 14px;
-  border-radius: 6px;
+  background: rgba(255, 0, 127, 0.03);
+  border: 1px dashed rgba(255, 0, 127, 0.3);
+  color: #ff007f;
+  padding: 12px 16px;
+  border-radius: 8px;
   font-size: 0.8rem;
   font-family: monospace;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px rgba(255, 0, 127, 0.2);
 }
 
 /* ==========================================
-   💬 3. CHAT VIEWPORT & GLASS BUBBLES
+   💬 3. INTERACTIVE CHAT VIEWPORT 
    ========================================== */
 .chat-window {
   flex: 1;
   overflow-y: auto;
-  padding-right: 5px;
+  padding-right: 10px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
-/* Scrollbar tuning */
 .chat-window::-webkit-scrollbar {
   width: 4px;
 }
 .chat-window::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 0, 127, 0.3);
   border-radius: 2px;
 }
 
-/* Message Wrapper Formatting */
+/* Message Node Alignments */
 .msg-wrapper {
   display: flex;
   width: 100%;
@@ -117,64 +130,73 @@ body {
 .user-wrapper { justify-content: flex-end; }
 .ai-wrapper { justify-content: flex-start; }
 
-/* Refined Premium Message Elements */
+/* Custom Luxury Glassmorphic Chat Bubbles */
 .msg {
   max-width: 75%;
-  padding: 12px 16px;
-  border-radius: 12px;
-  font-size: 0.9rem;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: 0.95rem;
   line-height: 1.5;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.msg:hover {
+  transform: translateY(-2px);
+}
+
+/* User Bubble Accent: Sophisticated High Contrast */
 .msg.user {
   background: #ffffff;
   color: #000000;
   border-bottom-right-radius: 2px;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
+/* AI Bubble Accent: Sleek Editorial Semi-Transparent Glass */
 .msg.ai {
   background: rgba(255, 255, 255, 0.03);
-  color: #e5e5e5;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #f0f0f0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom-left-radius: 2px;
+  backdrop-filter: blur(5px);
 }
 
 /* ==========================================
-   ⌨️ 4. CONTROLS & UTILITY BAR INPUTS
+   ⌨️ 4. CONTROLS & UTILITY BAR ACTION INPUTS
    ========================================== */
 .chat-form {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
 }
 
 .chat-form input[type="text"] {
   flex: 1;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 14px 18px;
-  border-radius: 8px;
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid rgba(255, 0, 127, 0.25);
+  padding: 16px 20px;
+  border-radius: 10px;
   color: #ffffff;
-  font-size: 0.9rem;
-  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
   outline: none;
   letter-spacing: 0.05em;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .chat-form input[type="text"]:focus {
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: #ff007f;
+  background: rgba(20, 20, 20, 0.9);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.25);
 }
 
-/* Action Trigger Button */
+/* Signature Action Send Trigger Button */
 .chat-form button {
   background: #ffffff;
   border: none;
-  padding: 0 20px;
-  height: 48px;
-  border-radius: 8px;
+  padding: 0 24px;
+  height: 52px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,14 +205,16 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 0.85rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: all 0.2s ease;
 }
 
 .chat-form button:hover {
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateY(-1px);
+  background: #ff007f;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
 }
 
 .visually-hidden {
@@ -205,24 +229,27 @@ body {
 }
 
 /* ==========================================
-   📋 5. FOOTER STYLING
+   📋 5. FINE-LINE FOOTER UTILITIES
    ========================================== */
 .site-footer {
-  margin-top: 20px;
+  margin-top: 25px;
   padding-top: 15px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   justify-content: space-between;
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 1px;
 }
 
 .site-footer nav a {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 0, 127, 0.5);
   text-decoration: none;
   margin-left: 15px;
+  transition: color 0.2s ease;
 }
 
 .site-footer nav a:hover {
-  color: #ffffff;
+  color: #ff007f;
+  text-shadow: 0 0 8px rgba(255, 0, 127, 0.4);
 }
