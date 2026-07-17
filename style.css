@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: 'Inter', -apple-system, sans-serif;
   background-color: #000000;
   color: #ffffff;
   display: flex;
@@ -18,80 +18,98 @@ body {
   align-items: center;
   min-height: 100vh;
   letter-spacing: 0.03em;
+  overflow-x: hidden;
+}
+
+/* Cyber ticker at the top/side */
+.cyber-ticker {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
 }
 
 /* ==========================================
-   🖼️ 2. LAYOUT FRAME & GLOWING CONTAINERS
+   🖼️ 2. LAYOUT FRAME & CONTAINER SIZING
    ========================================== */
-.chat-container {
+.page-wrapper {
   width: 100%;
-  max-width: 850px;
-  height: 90vh;
-  background: rgba(10, 10, 10, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  max-width: 800px;
+  height: 85vh;
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  padding: 24px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
 }
 
 /* Luxury Brand Header Styling */
 .brand-header {
   text-align: center;
-  margin-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding-bottom: 15px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 20px;
 }
 
 .brand-title {
   font-family: 'Bodoni Moda', 'Didot', serif;
-  font-weight: 500;
-  font-size: 1.1rem;
-  letter-spacing: 0.25em;
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #ffffff;
+  margin-top: 10px;
+}
+
+/* Main inner chat container grid */
+.chatbox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* LevelUp Monitor Panel: Locked top question tracker block */
-#latestQuestionBox {
-  display: none; /* Controlled dynamically by script.js */
-  background: rgba(255, 0, 127, 0.03);
-  border: 1px dashed rgba(255, 0, 127, 0.4);
-  color: #ff007f;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 0.85rem;
+.latest-question-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
   font-family: monospace;
-  margin-bottom: 16px;
-  text-shadow: 0 0 8px rgba(255, 0, 127, 0.2);
+  margin-bottom: 15px;
 }
 
 /* ==========================================
    💬 3. CHAT VIEWPORT & GLASS BUBBLES
    ========================================== */
-#chatWindow {
+.chat-window {
   flex: 1;
   overflow-y: auto;
-  padding-right: 8px;
+  padding-right: 5px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
-/* Custom modern scrollbar */
-#chatWindow::-webkit-scrollbar {
-  width: 6px;
+/* Scrollbar tuning */
+.chat-window::-webkit-scrollbar {
+  width: 4px;
 }
-#chatWindow::-webkit-scrollbar-thumb {
+.chat-window::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
-/* Bubble Alignment Wrappers */
+/* Message Wrapper Formatting */
 .msg-wrapper {
   display: flex;
   width: 100%;
@@ -99,108 +117,112 @@ body {
 .user-wrapper { justify-content: flex-end; }
 .ai-wrapper { justify-content: flex-start; }
 
-/* Base Message Styling */
+/* Refined Premium Message Elements */
 .msg {
   max-width: 75%;
-  padding: 14px 18px;
-  border-radius: 14px;
-  font-size: 0.95rem;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
   line-height: 1.5;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s ease;
 }
 
-.msg:hover {
-  transform: scale(1.015);
-}
-
-/* User Message Glass Design */
 .msg.user {
   background: #ffffff;
   color: #000000;
   border-bottom-right-radius: 2px;
-  font-weight: 400;
 }
 
-/* AI Message Glass Design */
 .msg.ai {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.03);
   color: #e5e5e5;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom-left-radius: 2px;
 }
 
-/* Live CSS Loading Animation Text Styles */
-.system-loading {
-  color: rgba(255, 255, 255, 0.5) !important;
-  font-family: monospace;
-  font-size: 0.85rem;
-  animation: pulseLoader 1.5s infinite ease-in-out;
-}
-
-@keyframes pulseLoader {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
-}
-
 /* ==========================================
    ⌨️ 4. CONTROLS & UTILITY BAR INPUTS
    ========================================== */
-#chatForm {
+.chat-form {
   display: flex;
   gap: 12px;
   align-items: center;
 }
 
-.input-container {
+.chat-form input[type="text"] {
   flex: 1;
-  position: relative;
-}
-
-#userInput {
-  width: 100%;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 16px 20px;
-  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px 18px;
+  border-radius: 8px;
   color: #ffffff;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
   outline: none;
-  transition: all 0.25s ease;
-}
-
-#userInput:focus {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 0, 127, 0.6);
-  box-shadow: 0 0 15px rgba(255, 0, 127, 0.15);
-}
-
-/* Sophisticated Submit Action Button */
-.send-btn {
-  background: #ffffff;
-  border: none;
-  width: 52px;
-  height: 52px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  letter-spacing: 0.05em;
   transition: all 0.2s ease;
 }
 
-.send-btn:hover {
-  background: #ff007f;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 0, 127, 0.4);
+.chat-form input[type="text"]:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.send-btn:hover svg {
-  fill: #ffffff;
+/* Action Trigger Button */
+.chat-form button {
+  background: #ffffff;
+  border: none;
+  padding: 0 20px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #000000;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
 }
 
-.send-btn svg {
-  width: 20px;
-  height: 20px;
-  fill: #000000;
-  transition: fill 0.2s ease;
+.chat-form button:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ==========================================
+   📋 5. FOOTER STYLING
+   ========================================== */
+.site-footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.site-footer nav a {
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.site-footer nav a:hover {
+  color: #ffffff;
 }
