@@ -3,31 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat Assistant</title>
+    <title>L'Oréal // Neo-Advisor</title>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Orbitron:wght@700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
+    <div class="cyber-ticker">L'ORÉAL PARIS / AI PRODUCT LAB / FUTURE OF BEAUTY / CODESPACE V1.0</div>
+
     <div class="page-wrapper">
-      <!------- Header / Branding ------->
       <header class="site-header">
-        <h1 class="site-title">Smart Product Advisor</h1>
+        <div class="logo-container">
+          <img src="image_202e9d.png" alt="L'Oréal Paris" class="brand-logo" />
+        </div>
+        <h1 class="site-title">CORE AI CORE / BEAUTY INTERFACE</h1>
       </header>
 
-      <!------- Chat Area ------->
       <main>
         <section class="chatbox">
+          <div id="latestQuestionBox" class="latest-question-box"></div>
+          
           <div id="chatWindow" class="chat-window">
-            <!-- messages will be appended here via JS -->
-          </div>
+            </div>
 
           <form id="chatForm" class="chat-form">
             <label for="userInput" class="visually-hidden">Message</label>
@@ -35,7 +39,7 @@
               id="userInput"
               name="userInput"
               type="text"
-              placeholder="Ask me about products or routines…"
+              placeholder="// ENTER QUERY: SYSTEM ROUTINES OR PRODUCTS..."
               autocomplete="off"
               required
             />
@@ -47,14 +51,12 @@
         </section>
       </main>
 
-      <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2025 Company Name. All rights reserved.</p>
+        <p>&copy; 2026 L'ORÉAL LABS. ALL RIGHTS RESERVED.</p>
         <nav>
-          <!-- These URLs are placeholders -->
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Contact</a>
+          <a href="#">PRIVACY_POLICY</a>
+          <a href="#">TERMS_OF_USE</a>
+          <a href="#">CONTACT_NODE</a>
         </nav>
       </footer>
     </div>

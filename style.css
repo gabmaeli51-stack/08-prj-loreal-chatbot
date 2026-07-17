@@ -5,109 +5,218 @@
   padding: 0;
 }
 
-/* —— body + fonts —— */
+/* —— cyber dark mode foundation —— */
 body {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
+  font-family: "Montserrat", Arial, sans-serif;
+  color: #ffffff;
+  background-color: #050505;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Background sub-text decorative line element */
+.cyber-ticker {
+  width: 100%;
+  background: #000;
+  border-bottom: 1px solid #ff007f;
+  color: #ff007f;
+  font-size: 10px;
+  letter-spacing: 4px;
+  padding: 6px 20px;
+  text-align: center;
+  font-weight: 700;
+  text-shadow: 0 0 8px #ff007f;
 }
 
 .page-wrapper {
   width: 90%;
-  max-width: 900px;
+  max-width: 850px;
+  padding-bottom: 40px;
 }
 
-/* header */
+/* header & branding with scale transitions */
 .site-header {
   text-align: center;
-  padding-top: 50px;
+  padding: 40px 0 20px;
+  border-bottom: 1px solid #222;
+}
+
+.logo-container {
+  display: inline-block;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Requirement: L'Oreal logo is displayed and zooms smoothly when hovered */
+.logo-container:hover {
+  transform: scale(1.06);
+}
+
+.brand-logo {
+  max-width: 240px;
+  height: auto;
+  filter: invert(1); /* Converts black logo text safely to sleek white for the dark look */
+  transition: filter 0.3s;
+}
+
+.logo-container:hover .brand-logo {
+  filter: invert(1) drop-shadow(0 0 12px #ffffff);
 }
 
 .site-title {
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  margin-top: 15px;
+  color: #666;
 }
 
-/* chat window */
+/* chat window layout */
 .chatbox {
-  margin: 40px 0;
+  margin: 35px 0;
 }
 
+/* Latest Question Display: Glowing Brutalist Header box */
+.latest-question-box {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #ff007f;
+  padding: 12px 16px;
+  margin-bottom: 15px;
+  background: rgba(255, 0, 127, 0.05);
+  border: 1px dashed #ff007f;
+  text-shadow: 0 0 6px #ff007f;
+  display: none;
+}
+
+/* Glassmorphism main message viewport window container frame */
 .chat-window {
-  height: 360px;
-  border: 1px solid #000;
-  padding: 20px;
-  font-size: 18px;
-  line-height: 1.5;
+  height: 420px;
+  border: 1px solid #222;
+  padding: 24px;
+  font-size: 15px;
   overflow-y: auto;
-  background: #fafafa;
-  white-space: pre-line;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
 }
 
-/* messages */
+/* Chat bubble structures */
+.msg-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.msg-wrapper.user-wrapper {
+  justify-content: flex-end;
+}
+
+.msg-wrapper.ai-wrapper {
+  justify-content: flex-start;
+}
+
+/* Interactive bubbles with scale pop-in & hover effects */
 .msg {
-  margin-bottom: 14px;
-  line-height: 1.5;
+  padding: 14px 18px;
+  max-width: 78%;
+  line-height: 1.6;
+  word-wrap: break-word;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Requirement LevelUp UI distinction - User Bubble: Solid Dark Cyber Punk Accent */
 .msg.user {
-  color: #000;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 16px 16px 2px 16px;
+  font-weight: 500;
 }
 
+.msg.user:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* AI Bubble: Dark Glassmorphic container carrying high-contrast glowing accents */
 .msg.ai {
-  color: #666666;
+  background-color: rgba(20, 20, 20, 0.9);
+  color: #e0e0e0;
+  border: 1px solid #333;
+  border-radius: 16px 16px 16px 2px;
 }
 
-/* input row */
+.msg.ai:hover {
+  transform: translateY(-2px);
+  border-color: #ff007f;
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.25);
+}
+
+/* Loading state */
+.msg.system-loading {
+  color: #ff007f;
+  border: 1px dashed #ff007f;
+  background: rgba(255, 0, 127, 0.03);
+  text-shadow: 0 0 8px #ff007f;
+}
+
+/* Input entry rows */
 .chat-form {
   display: flex;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 20px;
 }
 
 .chat-form input {
   flex: 1;
-  padding: 12px;
-  border: 1px solid #ccc;
-  font-size: 18px;
+  padding: 16px;
+  background: #0a0a0a;
+  border: 1px solid #222;
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.3s;
 }
 
 .chat-form input:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
+  outline: none;
+  border-color: #ff007f;
+  box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+  background: #111;
 }
 
+/* Submit Action Button with hover pink-neon transition transformations */
 .chat-form button {
-  font-size: 18px;
-  background: #000;
-  color: #fff;
+  background: #ffffff;
+  color: #000000;
   border: none;
   padding: 12px;
-  width: 48px;
-  height: 48px;
+  width: 54px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.chat-form button:hover {
+  background: #ff007f;
+  color: #ffffff;
+  transform: scale(1.08);
+  box-shadow: 0 0 15px #ff007f;
 }
 
 .chat-form button .material-icons {
   font-size: 24px;
 }
 
-.chat-form button:hover {
-  background: #666666;
-}
-
-.chat-form button:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-}
-
-/* visually hidden */
+/* screen reader utility class remains standard */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -120,24 +229,29 @@ body {
   border: 0;
 }
 
-/* footer */
+/* footer styling layout configurations */
 .site-footer {
-  margin: 60px 0 40px;
+  margin-top: 50px;
   text-align: center;
-  font-size: 14px;
-  color: #666;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #444;
+  border-top: 1px solid #222;
+  padding-top: 24px;
 }
 
 .site-footer nav {
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .site-footer a {
-  margin: 0 8px;
-  color: #000;
+  margin: 0 12px;
+  color: #888;
   text-decoration: none;
+  transition: color 0.3s;
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: #ff007f;
+  text-shadow: 0 0 5px #ff007f;
 }
