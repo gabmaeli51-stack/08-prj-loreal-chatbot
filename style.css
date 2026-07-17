@@ -1,257 +1,206 @@
-/* —— basic reset —— */
+/* ==========================================
+   🎨 1. PREMIUM L'ORÉAL EDITORIAL TYPOGRAPHY
+   ========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Inter:wght@300;400;500&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* —— cyber dark mode foundation —— */
 body {
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #000000;
   color: #ffffff;
-  background-color: #050505;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   min-height: 100vh;
-  overflow-x: hidden;
+  letter-spacing: 0.03em;
 }
 
-/* Background sub-text decorative line element */
-.cyber-ticker {
+/* ==========================================
+   🖼️ 2. LAYOUT FRAME & GLOWING CONTAINERS
+   ========================================== */
+.chat-container {
   width: 100%;
-  background: #000;
-  border-bottom: 1px solid #ff007f;
-  color: #ff007f;
-  font-size: 10px;
-  letter-spacing: 4px;
-  padding: 6px 20px;
-  text-align: center;
-  font-weight: 700;
-  text-shadow: 0 0 8px #ff007f;
-}
-
-.page-wrapper {
-  width: 90%;
   max-width: 850px;
-  padding-bottom: 40px;
+  height: 90vh;
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* header & branding with scale transitions */
-.site-header {
+/* Luxury Brand Header Styling */
+.brand-header {
   text-align: center;
-  padding: 40px 0 20px;
-  border-bottom: 1px solid #222;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 15px;
 }
 
-.logo-container {
-  display: inline-block;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+.brand-title {
+  font-family: 'Bodoni Moda', 'Didot', serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
-/* Requirement: L'Oreal logo is displayed and zooms smoothly when hovered */
-.logo-container:hover {
-  transform: scale(1.06);
-}
-
-.brand-logo {
-  max-width: 240px;
-  height: auto;
-  filter: invert(1); /* Converts black logo text safely to sleek white for the dark look */
-  transition: filter 0.3s;
-}
-
-.logo-container:hover .brand-logo {
-  filter: invert(1) drop-shadow(0 0 12px #ffffff);
-}
-
-.site-title {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 5px;
-  margin-top: 15px;
-  color: #666;
-}
-
-/* chat window layout */
-.chatbox {
-  margin: 35px 0;
-}
-
-/* Latest Question Display: Glowing Brutalist Header box */
-.latest-question-box {
-  font-size: 12px;
-  letter-spacing: 1px;
+/* LevelUp Monitor Panel: Locked top question tracker block */
+#latestQuestionBox {
+  display: none; /* Controlled dynamically by script.js */
+  background: rgba(255, 0, 127, 0.03);
+  border: 1px dashed rgba(255, 0, 127, 0.4);
   color: #ff007f;
   padding: 12px 16px;
-  margin-bottom: 15px;
-  background: rgba(255, 0, 127, 0.05);
-  border: 1px dashed #ff007f;
-  text-shadow: 0 0 6px #ff007f;
-  display: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-family: monospace;
+  margin-bottom: 16px;
+  text-shadow: 0 0 8px rgba(255, 0, 127, 0.2);
 }
 
-/* Glassmorphism main message viewport window container frame */
-.chat-window {
-  height: 420px;
-  border: 1px solid #222;
-  padding: 24px;
-  font-size: 15px;
+/* ==========================================
+   💬 3. CHAT VIEWPORT & GLASS BUBBLES
+   ========================================== */
+#chatWindow {
+  flex: 1;
   overflow-y: auto;
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(10px);
+  padding-right: 8px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
 }
 
-/* Chat bubble structures */
+/* Custom modern scrollbar */
+#chatWindow::-webkit-scrollbar {
+  width: 6px;
+}
+#chatWindow::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* Bubble Alignment Wrappers */
 .msg-wrapper {
   display: flex;
   width: 100%;
 }
+.user-wrapper { justify-content: flex-end; }
+.ai-wrapper { justify-content: flex-start; }
 
-.msg-wrapper.user-wrapper {
-  justify-content: flex-end;
-}
-
-.msg-wrapper.ai-wrapper {
-  justify-content: flex-start;
-}
-
-/* Interactive bubbles with scale pop-in & hover effects */
+/* Base Message Styling */
 .msg {
+  max-width: 75%;
   padding: 14px 18px;
-  max-width: 78%;
-  line-height: 1.6;
-  word-wrap: break-word;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Requirement LevelUp UI distinction - User Bubble: Solid Dark Cyber Punk Accent */
+.msg:hover {
+  transform: scale(1.015);
+}
+
+/* User Message Glass Design */
 .msg.user {
-  background-color: #ffffff;
-  color: #000000;
-  border-radius: 16px 16px 2px 16px;
-  font-weight: 500;
-}
-
-.msg.user:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
-}
-
-/* AI Bubble: Dark Glassmorphic container carrying high-contrast glowing accents */
-.msg.ai {
-  background-color: rgba(20, 20, 20, 0.9);
-  color: #e0e0e0;
-  border: 1px solid #333;
-  border-radius: 16px 16px 16px 2px;
-}
-
-.msg.ai:hover {
-  transform: translateY(-2px);
-  border-color: #ff007f;
-  box-shadow: 0 0 15px rgba(255, 0, 127, 0.25);
-}
-
-/* Loading state */
-.msg.system-loading {
-  color: #ff007f;
-  border: 1px dashed #ff007f;
-  background: rgba(255, 0, 127, 0.03);
-  text-shadow: 0 0 8px #ff007f;
-}
-
-/* Input entry rows */
-.chat-form {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.chat-form input {
-  flex: 1;
-  padding: 16px;
-  background: #0a0a0a;
-  border: 1px solid #222;
-  color: #fff;
-  font-size: 15px;
-  letter-spacing: 1px;
-  font-family: "Montserrat", sans-serif;
-  transition: all 0.3s;
-}
-
-.chat-form input:focus {
-  outline: none;
-  border-color: #ff007f;
-  box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
-  background: #111;
-}
-
-/* Submit Action Button with hover pink-neon transition transformations */
-.chat-form button {
   background: #ffffff;
   color: #000000;
-  border: none;
-  padding: 12px;
-  width: 54px;
-  height: 54px;
+  border-bottom-right-radius: 2px;
+  font-weight: 400;
+}
+
+/* AI Message Glass Design */
+.msg.ai {
+  background: rgba(255, 255, 255, 0.04);
+  color: #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom-left-radius: 2px;
+}
+
+/* Live CSS Loading Animation Text Styles */
+.system-loading {
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-family: monospace;
+  font-size: 0.85rem;
+  animation: pulseLoader 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseLoader {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ==========================================
+   ⌨️ 4. CONTROLS & UTILITY BAR INPUTS
+   ========================================== */
+#chatForm {
   display: flex;
+  gap: 12px;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.chat-form button:hover {
-  background: #ff007f;
+.input-container {
+  flex: 1;
+  position: relative;
+}
+
+#userInput {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 16px 20px;
+  border-radius: 10px;
   color: #ffffff;
-  transform: scale(1.08);
-  box-shadow: 0 0 15px #ff007f;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.25s ease;
 }
 
-.chat-form button .material-icons {
-  font-size: 24px;
+#userInput:focus {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 0, 127, 0.6);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.15);
 }
 
-/* screen reader utility class remains standard */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+/* Sophisticated Submit Action Button */
+.send-btn {
+  background: #ffffff;
+  border: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* footer styling layout configurations */
-.site-footer {
-  margin-top: 50px;
-  text-align: center;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: #444;
-  border-top: 1px solid #222;
-  padding-top: 24px;
+.send-btn:hover {
+  background: #ff007f;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 0, 127, 0.4);
 }
 
-.site-footer nav {
-  margin-top: 14px;
+.send-btn:hover svg {
+  fill: #ffffff;
 }
 
-.site-footer a {
-  margin: 0 12px;
-  color: #888;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.site-footer a:hover {
-  color: #ff007f;
-  text-shadow: 0 0 5px #ff007f;
+.send-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #000000;
+  transition: fill 0.2s ease;
 }
